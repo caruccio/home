@@ -1,0 +1,42 @@
+## Append this to ~/.bashrc
+#if [ -f ~/.bash_mateus ]; then
+#    . ~/.bash_mateus
+#fi
+
+export "PATH=$PATH:~/bin"
+
+## stuff
+
+alias l='ls -la'
+alias ..='cd ..'
+alias s=zssh
+alias sz='sz -y'
+alias rz='rz -y'
+
+export IGNOREEOF=5
+
+## CVS
+
+export CVSRSH=ssh
+export CVSROOT=mateus@covers.terra.com.br:/u/local/src/repositorio
+alias cvs.st='cvs -nq up'
+function cvs.diff()
+{
+	cvs diff -pu $@ | gvim -
+}
+
+# cria unm alias de shell para cada alias do /etc/hosts
+eval $(awk '/[0-9].[0-9].[0-9].[0-9]/{if (NF > 2) print "alias "$3"=\"zssh "$2"\";"}' /etc/hosts)
+
+export _RED="\033\[[31;1m\]"
+export _GREEN="\033\[[32;1m\]"
+export _YELLOW="\033\[[33;1m\]"
+export _BLUE="\033\[[34;1m\]"
+export _CYAN="\033\[[36;1m\]"
+export _WHITE="\033\[[37;1m\]"
+export _NONE="\033\[[m\]"
+export _BOLD="\033\[[0;0;1m\]"
+
+[ $UID == 0 ] && export PS1="$_BOLD$_RED\u$_BOLD@$_YELLOW\h $_BLUE\W $_BOLD\$$_NONE "
+[ $UID == 0 ] || export PS1="$_BOLD$_GREEN\u$_BOLD@$_YELLOW\h $_BLUE\W $_BOLD\$$_NONE "
+#export PS1="\u@\h \W \$ "
