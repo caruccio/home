@@ -14,3 +14,5 @@
 	d  = diff
 	a  = add
 	ai = add -i
+	P = push
+	p = pull
