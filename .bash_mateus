@@ -12,6 +12,7 @@ alias ..='cd ..'
 alias s=zssh
 alias sz='sz -y'
 alias rz='rz -y'
+alias g=git
 
 export IGNOREEOF=5
 

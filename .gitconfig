@@ -1,0 +1,16 @@
+[user]   # Edit by hand, or via "git config --global user.name" etc.
+	name   = Mateus Caruccio
+	email  = mateus.caruccio@corp.terra.com.br
+
+[color]  # Ensure we get color
+	diff   = auto
+	branch = auto
+	status = auto
+
+[alias]  # shortcuts
+	ci = commit
+	st = status
+	co = checkout
+	d  = diff
+	a  = add
+	ai = add -i
