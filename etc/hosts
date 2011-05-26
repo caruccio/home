@@ -10,6 +10,7 @@ ff02::2 ip6-allrouters
 
 
 200.154.54.250		dsv-falcao01.terra.com.br		fc1
+200.154.54.246		dsv-falcao02.terra.com.br		fc2
 200.154.54.20		breslau.terra.com.br				breslau
 
 200.154.54.227		dsv-realtime01.terra.com.br	rt1
