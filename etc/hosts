@@ -1,0 +1,20 @@
+127.0.0.1	localhost
+127.0.1.1	mateus-desktop
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+
+200.154.54.250		dsv-falcao01.terra.com.br		fc1
+200.154.54.20		breslau.terra.com.br				breslau
+
+200.154.54.227		dsv-realtime01.terra.com.br	rt1
+200.154.54.226		dsv-realtime02.terra.com.br	rt2
+
+200.154.54.54		gs-infra.terra.com.br			gs
+
+200.154.54.245		dsv-bridge7-02.terra.com.br 	br2
