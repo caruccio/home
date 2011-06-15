@@ -22,7 +22,7 @@ syn on
 
 if has("gui_running")
 	set mouse=a
-	set guifont="DejaVu Sans Mono 9"
+	set guifont=DejaVu\ Sans\ Mono\ 9
 	set lines=37 columns=149
 endif
 
