@@ -8,6 +8,7 @@
 	status = auto
 
 [alias]  # shortcuts
+	b = branch
 	ci = commit
 	st = status
 	co = checkout
