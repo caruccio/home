@@ -1,0 +1,3 @@
+#!/bin/sh -x
+[ $# -lt 1 ] && exit 1
+git clone ssh://mateus@breslau.terra.com.br/git/$1.git $2
