@@ -16,3 +16,4 @@
 	ai = add -i
 	ps = push
 	pl = pull
+	b  = branch
