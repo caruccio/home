@@ -20,7 +20,7 @@ export IGNOREEOF=5
 ## CVS
 
 export CVSRSH=ssh
-export CVSROOT=mateus@covers.terra.com.br:/u/local/src/repositorio
+export CVSROOT=mateus.caruccio@covers.terra.com.br:/u/local/src/repositorio
 alias cvs.st='cvs -nq up'
 function cvs.diff()
 {
@@ -39,6 +39,11 @@ export _WHITE="\[\033[37;1m\]"
 export _NONE="\[\033[m\]"
 export _BOLD="\[\033[0;0;1m\]"
 
-[ $UID == 0 ] && export PS1="$_BOLD$_RED\u$_BOLD@$_YELLOW\h $_BLUE\W $_BOLD\$$_NONE " \
-              || export PS1="$_BOLD$_GREEN\u$_BOLD@$_YELLOW\h $_BLUE\W $_BOLD\$$_NONE "
-#export PS1="\u@\h \W \$ "
+COLORS=( $_RED $_GREEN $_YELLOW $_BLUE $_CYAN )
+n=$(printf %i 0x`echo $HOSTNAME|md5sum|cut -c 1-6`)
+c=`printf "%i" 0x$n`
+HOSTCOLOR=${COLORS[$(( $c % ${#COLORS[*]} ))]}
+[ $UID == 0 ] && USERCOLOR="$_BOLD$_RED" || USERCOLOR="$_GREEN"
+[ "$HOSTNAME" != "mateus-desktop" ] && HOSTCOLOR=${COLORS[$(( $c % ${#COLORS[*]} ))]} || HOSTCOLOR=$_YELLOW
+
+export PS1="$USERCOLOR\u$_NONE @ $HOSTCOLOR\h $_BLUE\W $_BOLD\$$_NONE "

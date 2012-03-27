@@ -1,0 +1,101 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Carp;
+use Pod::Usage qw( pod2usage );
+use Getopt::Long qw( :config gnu_getopt );
+use version; my $VERSION = qv('0.0.1');
+use English qw( -no_match_vars );
+use List::Util qw( max min sum );
+use POSIX qw( floor );
+
+my %config = (tail => 10);
+GetOptions(
+   \%config, 'usage', 'help', 'man', 'version',
+   qw(
+     mind|min-data-points|m=i noise|N=s percentual|p!
+     numeric|n! step|s|d=s include_zero|include-zero|zero|z!
+     tail|t=i
+     )
+);
+pod2usage(message => "$0 $VERSION", -verbose => 99, -sections => '')
+  if $config{version};
+pod2usage(-verbose => 99, -sections => 'USAGE') if $config{usage};
+pod2usage(-verbose => 99, -sections => 'USAGE|EXAMPLES|OPTIONS')
+  if $config{help};
+pod2usage(-verbose => 2) if $config{man};
+
+# Script implementation here
+if ($config{noise}) {
+   my ($noise_level, $perc) = $config{noise} =~ m{\A ([\d.]+) (%?) \z}
+     or pod2usage(-verbose => 99, -sections => 'USAGE');
+   $config{noise}     = $noise_level;
+   $config{noiseperc} = $perc;
+} ## end if ($config{noise})
+
+$config{step} = 1 if $config{numeric} && !$config{step};
+
+my %hits;
+while (<>) {
+   chomp;
+   $_ = floor($_ / $config{step})
+     if $config{step} && $config{step} != 1;
+   ++$hits{$_};
+} ## end while (<>)
+
+my @labels;
+my @frequencies;
+if ($config{numeric}) {
+   my $min = min keys %hits;
+   $min = min 0, $min if $config{include_zero};
+   my $max = max keys %hits;
+   $max = max 0, $max if $config{include_zero};
+   while ($min <= $max) {
+      push @labels, $min * $config{step};
+      push @frequencies, exists($hits{$min}) ? $hits{$min} : 0;
+      ++$min;
+   }
+} ## end if ($config{numeric})
+else {
+
+   # Order by frequency, descreasing
+   @labels = reverse sort { $hits{$a} <=> $hits{$b} } keys %hits;
+   @frequencies = @hits{@labels};
+} ## end else [ if ($config{numeric})
+
+$_ ||= 0 for @frequencies;    # eliminate undef's
+my $sum;
+$sum = sum(@frequencies) if $config{percentual};
+
+if ($config{noise}) {
+   my $noise_level =
+     $config{noiseperc}
+     ? (max(@frequencies) * $config{noise} / 100)
+     : $config{noise};
+
+   my $noise_index;
+   for my $index (0 .. $#frequencies) {
+      if ($frequencies[$index] >= $noise_level) {
+         $noise_index = undef;
+      }
+      elsif (!defined $noise_index) {
+         $noise_index = $index;
+      }
+   } ## end for my $index (0 .. $#frequencies)
+
+   if (defined $noise_index) {
+      $noise_index =
+        max($noise_index + $config{tail}, $config{mind} || 0);
+      splice @frequencies, $noise_index 
+         if $noise_index < scalar @frequencies;
+   } ## end if (defined $noise_index)
+} ## end if ($config{noise})
+
+if ($config{percentual}) {
+   my $ratio = 100 / $sum;
+   $_ *= $ratio for @frequencies;
+}
+
+print {*STDOUT} $labels[$_], "\t", $frequencies[$_], "\n"
+  for 0 .. $#frequencies;
+

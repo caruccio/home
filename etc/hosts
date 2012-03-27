@@ -24,3 +24,14 @@ ff02::2 ip6-allrouters
 
 
 189.27.223.57	tunel-falcao	tfc
+
+10.224.195.22	centos6-32	centos6-32
+10.225.50.51	centos6-64	centos6-64
+
+10.224.195.23	qpid-cluster01 qpid-cluster01
+
+10.224.195.27	dsv-ubuntu	ubuntu
+10.224.195.28	freebsd	freebsd
+
+
+200.154.54.159	mateus.dsv-ws.terra.com.br
