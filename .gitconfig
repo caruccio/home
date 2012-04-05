@@ -17,3 +17,4 @@
 	ai = add -i
 	ps = push
 	pl = pull
+	tree = log --graph --pretty=oneline --abbrev-commit

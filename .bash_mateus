@@ -44,6 +44,6 @@ n=$(printf %i 0x`echo $HOSTNAME|md5sum|cut -c 1-6`)
 c=`printf "%i" 0x$n`
 HOSTCOLOR=${COLORS[$(( $c % ${#COLORS[*]} ))]}
 [ $UID == 0 ] && USERCOLOR="$_BOLD$_RED" || USERCOLOR="$_GREEN"
-[ "$HOSTNAME" != "mateus-desktop" ] && HOSTCOLOR=${COLORS[$(( $c % ${#COLORS[*]} ))]} || HOSTCOLOR=$_YELLOW
+[ "$HOSTNAME" != "mateus-caruccio" ] && HOSTCOLOR=${COLORS[$(( $c % ${#COLORS[*]} ))]} || HOSTCOLOR=$_YELLOW
 
 export PS1="$USERCOLOR\u$_NONE @ $HOSTCOLOR\h $_BLUE\W $_BOLD\$$_NONE "

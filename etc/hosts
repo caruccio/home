@@ -1,7 +1,8 @@
 127.0.0.1	localhost
-127.0.1.1	mateus-desktop
+10.225.13.112	mateus-caruccio
+#127.0.1.1	mateus-caruccio
 127.0.1.1	mateus-laptop
-192.168.1.103	xbmc
+#192.168.1.103	xbmc
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
@@ -10,7 +11,7 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
-
+200.154.54.40		dsv-falcao-python					dpf
 200.154.54.250		dsv-falcao01.terra.com.br		fc1
 200.154.54.246		dsv-falcao02.terra.com.br		fc2
 200.154.54.20		breslau.terra.com.br				breslau
@@ -26,7 +27,7 @@ ff02::2 ip6-allrouters
 189.27.223.57	tunel-falcao	tfc
 
 10.224.195.22	centos6-32	centos6-32
-10.225.50.51	centos6-64	centos6-64
+10.224.195.33	centos6-64	centos6-64
 
 10.224.195.23	qpid-cluster01 qpid-cluster01
 
@@ -35,3 +36,5 @@ ff02::2 ip6-allrouters
 
 
 200.154.54.159	mateus.dsv-ws.terra.com.br
+
+10.224.195.31	manev01	manev01
