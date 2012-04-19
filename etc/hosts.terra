@@ -1,0 +1,33 @@
+127.0.0.1 localhost
+10.225.13.112  mateus-caruccio
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+# falcao
+200.154.54.40 dsv-falcao-python dfp
+200.154.54.250 dsv-falcao01.terra.com.br fc1
+200.154.54.246 dsv-falcao02.terra.com.br fc2
+# repos
+200.154.54.54 ap-mc.terra.com.br mc
+200.154.54.20 breslau.terra.com.br breslau
+# bridge
+200.154.54.245 dsv-bridge7-02.terra.com.br br2
+# dsv
+10.224.195.22 centos6-32 centos6-32
+10.224.195.33 centos6-64 centos6-64
+10.224.195.27 dsv-ubuntu ubuntu
+10.224.195.28 freebsd freebsd
+10.224.195.31 manev01 manev01
+200.154.54.159 mateus.dsv-ws.terra.com.br
+# qpid
+200.154.54.235 dsv-bridge-acct01
+10.224.195.23 qpid-cluster01 qpid-cluster01
+# realtime
+200.154.54.65 dsv-realtime02-64 ## build
+200.154.54.130 dsv-realtime01-32 ## teste pub
+200.154.54.65 dsv-realtime02-64 ## teste sub
+200.154.54.227 dsv-realtime01.terra.com.br rt1
+200.154.54.226 dsv-realtime02.terra.com.br rt2
