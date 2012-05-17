@@ -31,3 +31,6 @@ ff02::2 ip6-allrouters
 200.154.54.65 dsv-realtime02-64 ## teste sub
 200.154.54.227 dsv-realtime01.terra.com.br rt1
 200.154.54.226 dsv-realtime02.terra.com.br rt2
+
+# producao - falcao
+200.176.14.142    pub-be01-poa.terra.com.br prod-falcao01

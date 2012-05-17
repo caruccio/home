@@ -1,3 +1,6 @@
 #!/bin/sh -x
 [ $# -lt 1 ] && exit 1
-git clone ssh://mateus@breslau.terra.com.br/git/$1.git $2
+repo=$1
+shift
+#git clone git@git.ape.tpn.terra.com:$repo.git $@
+git clone ssh://mateus@breslau.terra.com.br/git/${repo}.git $@
